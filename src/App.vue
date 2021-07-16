@@ -1,32 +1,127 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app>
+    <v-navigation-drawer v-model="drawer" app="">
+      <v-list>
+        <v-list-item
+          links
+          v-for="item in items"
+          :key="item.titulo"
+          :to="item.path"
+        >
+          <v-list-item-action>
+            <v-icon>mdi-{{ item.icono }}</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>{{ item.titulo }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-app-bar class="primary" app>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"> </v-app-bar-nav-icon>
+      <v-toolbar-title>
+        <h1 class="home">Cursos Da Vinci</h1>
+      </v-toolbar-title>
+    </v-app-bar>
+
+    <v-main>
+      <v-container fluid>
+        <transition
+          mode="out-in"
+          enter-active-class="animate__animated animate__fadeInLeft"
+        >
+          <router-view></router-view>
+        </transition>
+      </v-container>
+    </v-main>
+
+    <v-footer height="auto">
+      <v-card class="flex" flat tile>
+        <v-card-title class="info">
+          <v-spacer></v-spacer>
+
+          <v-btn
+            v-for="icon in icons"
+            class="info mx-3"
+            dark
+            icon
+            :key="icon.icono"
+          >
+            <v-icon size="36px" :src="icon.url">{{ icon.icono }}</v-icon>
+          </v-btn>
+        </v-card-title>
+
+        <v-card-actions class="info justify-center">
+          <strong>
+            &copy;2021 —Aplicaciones Moviles - Tp2 - Maximiliano
+            Colombatti</strong
+          >
+        </v-card-actions>
+      </v-card>
+    </v-footer>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+export default {
+  name: "App",
+
+  data: () => ({
+    icons: [
+      {
+        id: 1,
+        icono: "mdi-facebook",
+        url: "https://www.facebook.com"
+      },
+      {
+        id: 2,
+        icono: "mdi-twitter",
+        url: "https://www.twitter.com"
+      },
+      {
+        id: 3,
+        icono: "mdi-instagram",
+        url: "https://www.instagram.com"
+      }
+    ],
+    items: [
+      {
+        titulo: "Home",
+        icono: "home",
+        path: "/"
+      },
+      {
+        titulo: "Ingresar",
+        icono: "view-list",
+        path: "/ingresar"
+      },
+      {
+        titulo: "form",
+        icono: "view-list",
+        path: "/form"
+      },
+      {
+        titulo: "Mostrar",
+        icono: "file-check-outline",
+        path: "/mostrar"
+      }
+    ],
+    cursos: [],
+    drawer: null,
+    group: null
+  })
+};
+</script>
+<style scope>
+h1 {
+  color: azure;
 }
 
-#nav {
-  padding: 30px;
+a {
+  text-decoration: none;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.v-image {
+  min-height: 330px;
 }
 </style>
