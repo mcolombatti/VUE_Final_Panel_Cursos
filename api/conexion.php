@@ -9,6 +9,20 @@ $cnx = mysqli_connect('localhost', 'id17243308_user_apm', 'Aplicaciones_Moviles_
 //host="localhost"
 
 
+function guardar( $idcursos, $nombre, $descripcion, $fecha_inicio, $precio, $profesor, $imagen_descripcion, $imagen ){
+	global $cnx;	
+	//En el editar si la imagen es null, creamos un string vacio y si tenemos imagen lo asociamos al query
+
+	$update_imagen = $imagen ? " , imagen = '$imagen'" : "";
+    $c = "INSERT INTO cursos VALUES ( $idcursos, $nombre, $descripcion, $fecha_inicio, $precio, $profesor, $imagen_descripcion, $imagen) on duplicate key update nombre = '$nombre', descripcion = '$descripcion', precio ='$precio', profesor ='$profesor', imagen_descripcion ='$imagen_descripcion', fecha_inicio = '$fecha_inicio', $update_imagen";
+
+
+   
+   $retorno = mysqli_query($cnx, $c);
+   echo mysqli_error($cnx);
+   
+	return get_listado();
+}
 
 function get_listado($cantidad = null ){ //si mando un n�mero lo mando como limit, sino trae todos los registros
 	global $cnx;

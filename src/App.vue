@@ -91,19 +91,14 @@ export default {
         path: "/"
       },
       {
-        titulo: "Ingresar",
-        icono: "view-list",
-        path: "/ingresar"
-      },
-      {
         titulo: "form",
         icono: "view-list",
         path: "/form"
       },
       {
-        titulo: "Mostrar",
+        titulo: "Ver",
         icono: "file-check-outline",
-        path: "/mostrar"
+        path: "/ver"
       }
     ],
     cursos: [],

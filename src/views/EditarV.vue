@@ -6,9 +6,29 @@
       v-model="nuevoObjeto.titulo"
     ></v-text-field>
     <v-text-field
+      label="nombre"
+      required
+      v-model="nuevoObjeto.nombre"
+    ></v-text-field>
+    <v-text-field
+      label="apellido"
+      required
+      v-model="nuevoObjeto.apellido"
+    ></v-text-field
+    ><v-text-field
+      label="email"
+      required
+      v-model="nuevoObjeto.email"
+    ></v-text-field
+    ><v-text-field
       label="comentario"
       required
       v-model="nuevoObjeto.comentario"
+    ></v-text-field
+    ><v-text-field
+      label="seleccion"
+      required
+      v-model="nuevoObjeto.selected"
     ></v-text-field>
     <v-icon class="mdi mdi-arrow-left " @click="$router.go(-1)">Volver</v-icon>
     <v-row>
@@ -31,6 +51,9 @@ export default {
       fecha: "",
       nuevoObjeto: {
         titulo: this.$route.params.titulo,
+        nombre: this.$route.params.nombre,
+        apellido: this.$route.params.apellido,
+        email: this.$route.params.email,
         comentario: this.$route.params.comentario,
         selected: this.$route.params.selected.split(","),
         fecha: this.$route.params.fecha
@@ -56,6 +79,7 @@ export default {
       }
       this.local.push(this.nuevoObjeto);
       localStorage.setItem("datos", JSON.stringify(this.local));
+      this.$router.push("/ver");
     },
     mostrar: function() {
       this.local = JSON.parse(localStorage.getItem("datos"));
