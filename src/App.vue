@@ -20,7 +20,7 @@
     <v-app-bar class="primary" app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"> </v-app-bar-nav-icon>
       <v-toolbar-title>
-        <h1 class="home">Cursos Da Vinci</h1>
+        <h1 class="home ">Cursos Da Vinci</h1>
       </v-toolbar-title>
     </v-app-bar>
 
@@ -91,14 +91,19 @@ export default {
         path: "/"
       },
       {
-        titulo: "form",
+        titulo: "Pedir Cursos",
         icono: "view-list",
         path: "/form"
       },
       {
-        titulo: "Ver",
-        icono: "file-check-outline",
+        titulo: "Ver Cursos Pedidos",
+        icono: "eye",
         path: "/ver"
+      },
+      {
+        titulo: "Mis Tareas",
+        icono: "file-check-outline",
+        path: "/todo"
       }
     ],
     cursos: [],
@@ -107,11 +112,10 @@ export default {
   })
 };
 </script>
-<style scope>
+<style>
 h1 {
   color: azure;
 }
-
 a {
   text-decoration: none;
 }

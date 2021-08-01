@@ -2,7 +2,7 @@
   <div>
     <v-card class=" pa-5" outlined tile>
       <v-responsive aspect-ratio="16:9" class="pa-4">
-        <h2 class="  text-center ">
+        <h2 class=" pb-3 text-center ">
           {{ item.nombre }}
         </h2>
         <v-img
@@ -38,6 +38,6 @@ export default {
 </script>
 <style scoped>
 h2 {
-  color: azure;
+  color: #009688;
 }
 </style>

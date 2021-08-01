@@ -46,7 +46,7 @@
                 <v-select
                   :items="items"
                   v-model="formIngresar.selected"
-                  label="Solo field"
+                  label="Temática"
                   multiple
                 ></v-select>
               </v-col>
@@ -71,9 +71,9 @@
                 v-if="hayErrores"
                 :class="verificar ? 'enviado' : 'classError'"
               >
-                <ul>
-                  <li v-for="x in errores" :key="x.errores">{{ x }}</li>
-                </ul>
+                <v-list-item v-for="x in errores" :key="x.errores">{{
+                  x
+                }}</v-list-item>
               </div>
               <div v-else class="enviado">
                 <span>Enviado con éxito</span>
@@ -161,3 +161,8 @@ export default {
   }
 };
 </script>
+<style scoped>
+.classError {
+  color: red !important;
+}
+</style>
